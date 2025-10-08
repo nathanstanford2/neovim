@@ -2,13 +2,15 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
+    event = { "BufReadPost", "BufNewFile" },
     config = function()
-      local config = require("nvim-treesitter.configs")
-      config.setup({
-        auto_install = true,
+      require("nvim-treesitter.configs").setup({
         highlight = { enable = true },
         indent = { enable = true },
+        ensure_installed = {
+          "php", "vue", "javascript", "typescript", "html", "css", "blade"
+        },
       })
-    end
-  }
+    end,
+  },
 }
