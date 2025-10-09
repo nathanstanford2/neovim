@@ -1,13 +1,23 @@
--- lua/plugins/lsp/vue.lua
 return {
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      vim.lsp.enable("vue-language-server", vim.lsp.config({
+  "neovim/nvim-lspconfig",
+  opts = {
+    servers = {
+      vue_ls = {
         init_options = {
-          vue = { hybridMode = false },
+          vue = {
+            hybridMode = true,
+          },
         },
-      }))
-    end,
+        filetypes = { "vue" },
+        on_attach = function(client, bufnr)
+          -- Optional: stop tsserver from also attaching
+          for _, c in ipairs(vim.lsp.get_clients({ bufnr = bufnr })) do
+            if c.name == "tsserver" then
+              c.stop()
+            end
+          end
+        end,
+      },
+    },
   },
 }

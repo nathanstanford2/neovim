@@ -12,7 +12,9 @@ return {
       require("mason-lspconfig").setup({
         ensure_installed = {
           "intelephense",
-          "vue-language-server",
+          "ts_ls",
+          "vue_ls",
+          "lua_ls",
           "tailwindcss",
         },
       })
