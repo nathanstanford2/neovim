@@ -1,40 +1,42 @@
--- lua/plugins/formatting.lua
 return {
   {
-    "nvimtools/none-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = { "nvim-lua/plenary.nvim" },
+    "stevearc/conform.nvim",
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
     config = function()
-      local null_ls = require("null-ls")
-      local formatting = null_ls.builtins.formatting
-
-      null_ls.setup({
-        sources = {
-          formatting.pint.with({ command = "pint" }),
-          formatting.biome.with({
-            command = "biome",
-            extra_args = { "check", "--apply" },
-          }),
+      require("conform").setup({
+        formatters_by_ft = {
+          php = { "pint" },
+          blade = { "pint" },
+          javascript = { "biome" },
+          typescript = { "biome" },
+          json = { "biome" },
+          css = { "biome" },
+          -- Vue and HTML use their language servers (e.g. Volar, html-lsp)
+          vue = {},
+          html = {},
         },
-        on_attach = function(client, bufnr)
-          if client.supports_method("textDocument/formatting") then
-            local group = vim.api.nvim_create_augroup("FormatOnSave", {})
-            vim.api.nvim_clear_autocmds({ group = group, buffer = bufnr })
-            vim.api.nvim_create_autocmd("BufWritePre", {
-              group = group,
-              buffer = bufnr,
-              callback = function()
-                vim.lsp.buf.format({
-                  filter = function(fmt_client)
-                    return fmt_client.name == "null-ls"
-                  end,
-                  bufnr = bufnr,
-                })
-              end,
-            })
-          end
-        end,
+        format_on_save = {
+          lsp_fallback = true,
+          async = false,
+          timeout_ms = 2000,
+        },
       })
+
+      local conform = require("conform")
+      conform.formatters = {
+        pint = {
+          command = "pint",
+          stdin = false,
+          args = { "$FILENAME" },
+        },
+        biome = {
+          command = "biome",
+          args = { "format", "--stdin-file-path", "$FILENAME" },
+          stdin = true,
+        },
+      }
     end,
   },
 }
+
