@@ -14,10 +14,10 @@ return {
         settings = {
           Lua = {
             runtime = {
-              version = "LuaJIT", -- for Neovim
+              version = 'Lua 5.1',
             },
             diagnostics = {
-              globals = { "vim" }, -- Avoid 'undefined global vim'
+              globals = { 'bit', 'vim', 'it', 'describe', 'before_each', 'after_each', 'Snacks' },
             },
             workspace = {
               library = vim.api.nvim_get_runtime_file("", true),
