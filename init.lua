@@ -14,10 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require("vim-options")
 require("lazy").setup("plugins")
 
-vim.keymap.set("n", "<leader>h", ":bprevious<CR>")
-vim.keymap.set("n", "<leader>l", ":bnext<CR>")
-vim.opt.number = true
-vim.opt.relativenumber = true
+vim.cmd.colorscheme "catppuccin";
 
 vim.api.nvim_create_autocmd("FocusLost", {
     pattern = "*",
