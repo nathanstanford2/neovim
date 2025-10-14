@@ -11,6 +11,10 @@ return {
                 ensure_installed = {
                     "php", "vue", "javascript", "typescript", "html", "css", "blade"
                 },
+                modules = {},
+                sync_install = false,
+                ignore_install = {},
+                auto_install = true,
             })
         end,
     },
