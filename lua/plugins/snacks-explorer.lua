@@ -6,17 +6,6 @@ return {
         explorer = { enabled = true },
         picker = {
             enabled = true,
-            sources = {
-                explorer = {
-                    -- this is what you want to adjust:
-                    layout = {
-                        layout = {
-                            position = "right",
-                            -- you can also tweak width, etc if desired
-                        },
-                    },
-                },
-            },
         },
     },
     keys = {
