@@ -1,10 +1,22 @@
 return {
-    desc = "Snacks File Explorer",
-    recommended = true,
     "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
     opts = {
-        explorer = {
-            layout = { layout = { position = "right" } },
+        explorer = { enabled = true },
+        picker = {
+            enabled = true,
+            sources = {
+                explorer = {
+                    -- this is what you want to adjust:
+                    layout = {
+                        layout = {
+                            position = "right",
+                            -- you can also tweak width, etc if desired
+                        },
+                    },
+                },
+            },
         },
     },
     keys = {
