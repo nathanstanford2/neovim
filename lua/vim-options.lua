@@ -7,18 +7,30 @@ vim.g.background = "light"
 
 vim.opt.swapfile = false
 
+local keymap = vim.keymap
+
+local opts = { noremap = true, silent = true }
+
 -- Navigate vim panes better
-vim.keymap.set('n', '<c-k>', ':wincmd k<CR>')
-vim.keymap.set('n', '<c-j>', ':wincmd j<CR>')
-vim.keymap.set('n', '<c-h>', ':wincmd h<CR>')
-vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
+keymap.set('n', '<c-k>', ':wincmd k<CR>')
+keymap.set('n', '<c-j>', ':wincmd j<CR>')
+keymap.set('n', '<c-h>', ':wincmd h<CR>')
+keymap.set('n', '<c-l>', ':wincmd l<CR>')
 
-vim.keymap.set({ "n", "i" }, "<C-s>", "<cmd>w<cr>", { desc = "Save file" })
+keymap.set("n", "dw", 'vb"_d')
+keymap.set('n', 'te', ':tabedit')
 
-vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
+keymap.set("n", "ss", ":split<Return>", opts)
+keymap.set("n", "sv", ":vsplit<Return>", opts)
 
-vim.keymap.set("n", "<M-l>", ":bnext<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "<M-h>", ":bprevious<CR>", { desc = "Previous buffer" })
+keymap.set("n", "<C-a>", "gg<S-v>G")
+
+keymap.set({ "n", "i" }, "<C-s>", "<cmd>update<cr>", { desc = "Save file" })
+
+keymap.set('n', '<leader>h', ':nohlsearch<CR>')
+
+keymap.set("n", "<M-l>", ":bnext<CR>", { desc = "Next buffer" })
+keymap.set("n", "<M-h>", ":bprevious<CR>", { desc = "Previous buffer" })
 
 vim.api.nvim_set_keymap("i", "jj", "<Esc>", { noremap = false });
 
