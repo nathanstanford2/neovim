@@ -12,4 +12,8 @@ keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 keymap.set("n", "<M-l>", ":bnext<CR>", { desc = "Next buffer" })
 keymap.set("n", "<M-h>", ":bprevious<CR>", { desc = "Previous buffer" })
 
+keymap.set("n", "ss", ":split<Return>")
+keymap.set("n", "sv", ":vsplit<Return>")
+
 keymap.set("i", "jj", "<Esc>", { noremap = false });
+
