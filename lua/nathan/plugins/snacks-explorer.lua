@@ -16,6 +16,5 @@ return {
             end,
             desc = "Explorer Snacks (cwd)",
         },
-        { "<c-b>", "<leader>fE", desc = "Explorer Snacks (cwd)", remap = true },
     },
 }
