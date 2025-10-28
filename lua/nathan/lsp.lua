@@ -11,9 +11,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
         keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
 
         opts.desc = "Document symbols"
-        keymap.set("n", "<C-r>", "<cmd>Telescope lsp_document_symbols<CR>", opts) -- show definition, references
+        keymap.set("n", "gr", "<cmd>Telescope lsp_document_symbols<CR>", opts) -- show definition, references
 
-        keymap.set("n", "gD", vim.lsp.buf.declaration, opts)                      -- go to declaration
+        keymap.set("n", "gD", vim.lsp.buf.declaration, opts)                   -- go to declaration
 
         opts.desc = "Show LSP definition"
         keymap.set("n", "gd", vim.lsp.buf.definition, opts) -- show lsp definition
@@ -51,10 +51,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         opts.desc = "Restart LSP"
         keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+
+
+        opts.desc = "Toggle Inlay Hints"
+        keymap.set("n", "<leader>i",
+            function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 }) end, opts)
     end,
 })
-
--- vim.lsp.inlay_hint.enable(true)
 
 local severity = vim.diagnostic.severity
 
