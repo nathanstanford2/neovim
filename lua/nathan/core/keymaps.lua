@@ -5,7 +5,7 @@ keymap.set('n', '<c-j>', ':wincmd j<CR>')
 keymap.set('n', '<c-h>', ':wincmd h<CR>')
 keymap.set('n', '<c-l>', ':wincmd l<CR>')
 
-keymap.set({ "n", "i" }, "<C-s>", "<cmd>w<cr>", { desc = "Save file" })
+keymap.set({ "n", "i" }, "<C-s>", "<cmd>update<cr>", { desc = "Save file" })
 
 keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 
@@ -16,4 +16,3 @@ keymap.set("n", "ss", ":split<Return>")
 keymap.set("n", "sv", ":vsplit<Return>")
 
 keymap.set("i", "jj", "<Esc>", { noremap = false });
-

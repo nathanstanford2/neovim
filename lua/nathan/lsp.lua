@@ -13,11 +13,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         opts.desc = "Document symbols"
         keymap.set("n", "<C-r>", "<cmd>Telescope lsp_document_symbols<CR>", opts) -- show definition, references
 
-        opts.desc = "Workspace symbols"
-        keymap.set("n", "<C-R>", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", opts) -- show definition, references
-
-        opts.desc = "Go to declaration"
-        keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
+        keymap.set("n", "gD", vim.lsp.buf.declaration, opts)                      -- go to declaration
 
         opts.desc = "Show LSP definition"
         keymap.set("n", "gd", vim.lsp.buf.definition, opts) -- show lsp definition
