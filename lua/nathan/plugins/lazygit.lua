@@ -1,7 +1,11 @@
 return {
     "folke/snacks.nvim",
     opts = {
-        lazygit = {},
+        lazygit = {
+            theme = {
+                selectedLineBgcolor = { bg = "CursorLine" },
+            }
+        },
     },
     keys = {
         {

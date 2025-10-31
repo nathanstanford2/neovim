@@ -1,18 +1,49 @@
-local keymap = vim.keymap
+local map = vim.keymap.set
 
-keymap.set('n', '<c-k>', ':wincmd k<CR>')
-keymap.set('n', '<c-j>', ':wincmd j<CR>')
-keymap.set('n', '<c-h>', ':wincmd h<CR>')
-keymap.set('n', '<c-l>', ':wincmd l<CR>')
 
-keymap.set({ "n", "i" }, "<C-s>", "<cmd>update<cr>", { desc = "Save file" })
+-- neovim window navigation
+map('n', '<c-k>', ':wincmd k<CR>')
+map('n', '<c-j>', ':wincmd j<CR>')
+map('n', '<c-h>', ':wincmd h<CR>')
+map('n', '<c-l>', ':wincmd l<CR>')
 
-keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 
-keymap.set("n", "<M-l>", ":bnext<CR>", { desc = "Next buffer" })
-keymap.set("n", "<M-h>", ":bprevious<CR>", { desc = "Previous buffer" })
+local opts = { noremap = true, silent = true }
 
-keymap.set("n", "ss", ":split<Return>")
-keymap.set("n", "sv", ":vsplit<Return>")
+opts.desc = "Clear highlighting groups"
+map('n', '<leader>h', ':nohlsearch<CR>', opts)
 
-keymap.set("i", "jj", "<Esc>", { noremap = false });
+opts.desc = "Next buffer"
+map("n", "<M-l>", ":bnext<CR>", opts)
+
+opts.desc = "Previous buffer"
+map("n", "<M-h>", ":bprevious<CR>", opts)
+
+opts.desc = "Horizontal split"
+map("n", "<leader>hs", ":split<Return>", opts)
+
+opts.desc = "Veritcal split"
+map("n", "<leader>vs", ":vsplit<Return>", opts)
+
+opts.desc = "Yank into system clipboard"
+map({ "n", "x" }, "<leader>y", '"+yy', opts)
+
+opts.desc = "Delete into system clipboard"
+map({ "n", "x" }, "<leader>d", '"+dd', opts)
+
+opts.desc = "Paste from system clipboard"
+map("n", "<C-v>", '"+p', opts)
+
+opts.desc = "Write current buffer"
+map("n", "<leader>w", "<Cmd>update<CR>", opts)
+
+opts.desc = "Quit current buffer"
+map("n", "<leader>q", "<Cmd>:quit<CR>", opts)
+
+opts.desc = "Increase Window Width"
+map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", opts)
+
+opts.desc = "Decrease Window Width"
+map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", opts)
+
+map("i", "jj", "<Esc>", { noremap = false });
