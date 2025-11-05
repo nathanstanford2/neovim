@@ -46,6 +46,7 @@ return {
 
             -- Text object
             map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "Gitsigns select hunk")
+            map("n", "<leader>gsd", "<cmd>Gitsigns diffthis master<CR>")
         end,
     },
 }
