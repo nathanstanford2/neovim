@@ -7,6 +7,7 @@ return {
                 "vtsls",
                 "html",
                 "cssls",
+                "copilot",
                 "tailwindcss",
                 "intelephense",
                 "svelte",
