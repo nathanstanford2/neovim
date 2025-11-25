@@ -38,7 +38,7 @@ opts.desc = "Write current buffer"
 map("n", "<leader>w", "<Cmd>update<CR>", opts)
 
 opts.desc = "Quit current buffer"
-map("n", "<leader>q", "<Cmd>:quit<CR>", opts)
+map("n", "<leader>qq", "<Cmd>:quit<CR>", opts)
 
 opts.desc = "Increase Window Width"
 map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", opts)
